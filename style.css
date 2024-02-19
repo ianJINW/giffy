@@ -1,0 +1,203 @@
+/* Add your CSS styles here */
+
+/* Set display property to flex and justify-content to space-around */
+body {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+  background-image: linear-gradient(to bottom, #f8f8f8, #eaeaea);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Hide scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset default margin, padding, and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header styles */
+header {
+  z-index: 100;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 4vh 0 02vh 0;
+  min-height: 4vh;
+  background-color: #060544;
+  vertical-align: bottom;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+/* Header div styles */
+
+.search-container {
+  position: relative;
+  border-radius: 50%;
+  width: 200px; /* Initial width of the input */
+}
+
+.search-container input[type='search'] {
+  width: 40px;
+  padding: 10px;
+  background-color: antiquewhite;
+  border: 1px solid #ccc;
+  border-radius: 40%;
+  color: #f8f8f8;
+  box-sizing: border-box;
+  transition: width 0.3s; /* Smooth transition for width */
+}
+/* Search input and submit button styles */
+
+.search-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  cursor: pointer;
+}
+.search-container:hover .search-container i {
+  right: 2%;
+}
+/* Expand input when hovering over the search icon */
+.search-container:hover input[type='search'],
+.search-container:focus input[typr='search'] {
+  border-radius: 5px;
+  transform: scaleX(1);
+  color: #060544;
+  width: 400px; /* Expanded width */
+}
+/* Hover and active styles for search input */
+input:hover,
+input:active {
+  filter: drop-shadow(4px 3px rgb(96, 15, 15));
+  transition: all 0.5s ease-in-out;
+}
+
+/* Search icon styles */
+i {
+  cursor: pointer;
+}
+
+/* Main styles */
+main {
+  display: flex;
+  flex-direction: row;
+  margin: 7vh 0 0 0;
+  gap: 0;
+  justify-content: space-evenly;
+}
+
+/* Hover styles for icons */
+i:hover {
+  transform: scale(0.9);
+}
+
+/* Loader styles */
+.loader {
+  position: fixed;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10vw;
+  margin-top: 17vh; /* Adjusted margin top */
+}
+
+/* Section styles */
+section {
+  background: linear-gradient(to bottom, whitesmoke, lightslategrey);
+  min-height: 100vh;
+  margin: 10vh 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.giff {
+  border: 1px solid lightslategray;
+  margin: 2px;
+  padding: 3px;
+  border-radius: 10px;
+}
+.giff:hover {
+  transform: scale(0.99);
+  filter: drop-shadow(0.9);
+}
+.btn {
+  cursor: pointer;
+  width: 80%;
+  background: #060544;
+  color: rgb(183, 148, 103);
+  border-radius: 4px;
+}
+/* Individual wave animation */
+.wave {
+  border-radius: 20px;
+  animation: displace 2s infinite;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Delay for individual wave animation */
+.wave:nth-child(1) {
+  animation-delay: 0;
+}
+.wave:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.wave:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.wave:nth-child(5) {
+  animation-delay: 0.1s;
+}
+
+/* Keyframes for wave animation */
+@keyframes displace {
+  0% {
+    width: 9%;
+    height: 50vh;
+    background: #060544;
+    transform: translateY(30px);
+  }
+  25% {
+    width: 4%;
+    height: 20vh;
+    background: #4286f4;
+    transform: translateY(-30px);
+  }
+  75% {
+    height: 10vh;
+    border-radius: 20vh;
+    width: 8%;
+    background-color: rgb(132, 53, 48);
+    transform: translateY(30px);
+  }
+  100% {
+    border-radius: 20vh;
+    width: 9%;
+    height: 50vh;
+    background: #060544;
+    transform: translateY(-30px);
+  }
+}

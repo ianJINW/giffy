@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const api_key = 'uINmUkrPQC1UAITTTHNhRSKxBPVt1OJK'
   const Final_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}&limit=50&offset=0&rating=g&bundle=messaging_non_clips`
   const copyLink = 'https://media4.giphy.com/media/${gif.id}/giphy.mp4'
+  let imageData // Declare imageData variable outside fetch call
 
   let generateGif = async url => {
     try {
@@ -45,32 +46,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
       btn.innerHTML = 'Download'
       gifImg.src = gif.images.fixed_height.url
+      gifImg.setAttribute('preload', 'auto')
       gifImg.alt = gif.title
       title.innerHTML = gif.title
-      gifImg.onload = () => {
-        loader.style.display = 'none'
-      }
-      gifImg.addEventListener('error', () => {
+      gifImg.onload = () => { gifImg.addEventListener('error', () => {
         console.error('Failed to load image:', gifImg.src)
         gifImg.src = gif.images.fixed_height.url
       })
+        loader.style.display = 'none'
+      }
+     
       ///////////////////////download///////////////
-      let imageData // Declare imageData variable outside fetch call
-
       fetch(gif.images.fixed_height.url)
         .then(response => response.blob())
         .then(data => {
           const urlCreator = window.URL || window.webkitURL
           imageData = urlCreator.createObjectURL(data)
           gifImg.src = imageData
-          console.log('Josh coded this')
-          // Set href and download attributes inside fetch call
+
+          // Set href and download attributes for download button
           dBtn.setAttribute('href', imageData)
-          dBtn.setAttribute('download', gif.title) // Use gif.title as the filename
+          dBtn.setAttribute('download', `${gif.title}.gif`)
         })
         .catch(error => {
           console.error('Failed to fetch image data:', error)
         })
+
+      // Set href and download attributes for download button
+      dBtn.setAttribute('href', imageData)
+      dBtn.setAttribute('download', `${gif.title}.gif`)
       ///////////////////////download///////////////
 
       btn.setAttribute('download', gif.title)
@@ -82,6 +86,27 @@ document.addEventListener('DOMContentLoaded', () => {
       dBtn.append(btn)
       gifElement.appendChild(dBtn)
       section.appendChild(gifElement)
+      lazyLoadGif(gifElement, gif)
+    })
+  }
+  function lazyLoadGif (gifElement, gif) {
+    gifElement.addEventListener('mouseenter', () => {
+      console.log(gifElement.title)
+      if (!gifElement.dataset.loaded) {
+        // Check if GIF is not already loaded
+        // Fetch image data
+        fetch(gif.images.fixed_height.url)
+          .then(response => response.blob())
+          .then(data => {
+            const urlCreator = window.URL || window.webkitURL
+            const imageData = urlCreator.createObjectURL(data)
+            gifElement.src = imageData
+            gifElement.dataset.loaded = true // Mark GIF as loaded
+          })
+          .catch(error => {
+            console.error('Failed to fetch image data:', error)
+          })
+      }
     })
   }
   srch.addEventListener('click', () => {

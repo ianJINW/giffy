@@ -47,48 +47,52 @@ header {
 }
 /* Header div styles */
 
+/* Search container styles */
+
 .search-container {
   position: relative;
-  border-radius: 50%;
-  width: 200px; /* Initial width of the input */
+  width: auto; /* Adjusted width to fit content */
 }
 
 .search-container input[type='search'] {
-  width: 40px;
-  padding: 10px;
-  background-color: antiquewhite;
+  width: 200px; /* Initial width adjusted for usability */
+  padding: 10px 10px 10px 25px;
+  background-color: #fff; /* Changed background color to white */
   border: 1px solid #ccc;
-  border-radius: 40%;
-  color: #f8f8f8;
+  border-radius: 20px; /* Reduced border radius for a more subtle effect */
+  color: #333; /* Changed text color to improve readability */
   box-sizing: border-box;
-  transition: width 0.3s; /* Smooth transition for width */
+  transition: width 0.3s ease-in-out; /* Smooth transition for width */
 }
-/* Search input and submit button styles */
 
+/* Search icon styles */
 .search-container i {
+  left: 10px;
   position: absolute;
-  left: 12px;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
-  color: #aaa;
+  color: #888; /* Adjusted icon color for better contrast */
   cursor: pointer;
 }
-.search-container:hover .search-container i {
-  right: 2%;
-}
+
 /* Expand input when hovering over the search icon */
 .search-container:hover input[type='search'],
-.search-container:focus input[typr='search'] {
-  border-radius: 5px;
-  transform: scaleX(1);
-  color: #060544;
-  width: 400px; /* Expanded width */
+.search-container:focus input[type='search'],
+.search-container:active input[type='search'] {
+  border-radius: 20px; /* Adjusted border radius for a smoother transition */
+  width: 300px; /* Expanded width for better usability */
 }
-/* Hover and active styles for search input */
-input:hover,
-input:active {
-  filter: drop-shadow(4px 3px rgb(96, 15, 15));
-  transition: all 0.5s ease-in-out;
+
+/* Hover and active styles for search icon */
+.search-container:hover i,
+.search-container:focus i,
+.search-container:active i {
+  color: #333; /* Adjusted icon color for better visibility */
+}
+
+/* Improved hover effect for the entire search container */
+.search-container:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Added subtle box shadow for hover effect */
 }
 
 /* Search icon styles */
@@ -139,7 +143,9 @@ section {
 }
 .giff:hover {
   transform: scale(0.99);
-  filter: drop-shadow(0.9);
+  filter: grayscale(0, 9);
+  cursor: pointer;
+  filter: drop-shadow(4px, 4px, 40px, rgb(91, 83, 83));
 }
 .btn {
   cursor: pointer;

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const section = document.querySelector('section')
   const loader = document.querySelector('.loader')
 
-  const api_key = 'uINmUkrPQC1UAITTTHNhRSKxBPVt1OJK'
+  const api_key = 'sorry, forgot to hide this'
   const Final_URL = `https://api.giphy.com/v1/gifs/trending?api_key=${api_key}&limit=50&offset=0&rating=g&bundle=messaging_non_clips`
   const copyLink = 'https://media4.giphy.com/media/${gif.id}/giphy.mp4'
   let imageData // Declare imageData variable outside fetch call
